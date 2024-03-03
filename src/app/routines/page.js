@@ -6,16 +6,58 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
 import routineImage from "@/assets/images/routine_image.jpg"
 import Image from "next/image";
+import { LocateIcon } from "lucide-react";
+import Link from "next/link";
+import { Router } from "next/navigation";
+import { use } from "react";
+import { useRouter } from "next/router";
 
 export default function Component() {
     const { handleSubmit, control } = useForm();
 
     const onSubmit = (data) => {
-        // Handle the form submission here, you can log the data or send it to the backend
+        //move to page
+       const router = useRouter();
+       router.push('/routines/1');
         console.log(data);
     };
     return (
-        <div className="p-28 space-x-28 flex flex-row gap-10 mx-auto bg-white">
+        <>
+         <header className="flex justify-between items-center py-6 px-10 bg-[#f4f1ea]">
+        <div className="flex items-center space-x-4">
+          <button className="uppercase tracking-widest font-semibold text-sm">
+            Menu
+          </button>
+          <div className="flex items-center space-x-1">
+            <LocateIcon className="text-gray-500" />
+            <span className="text-xs">Kochi, Kerala </span>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4">
+            <Link href="/">
+            <span className="font-bold text-lg">Zenflow</span>
+            </Link>
+          
+        </div>
+        <div className="flex items-center space-x-4">
+          <div className="flex space-x-1">
+            <Link
+              className="text-xs uppercase"
+              href="/pricing
+          "
+            >
+              Pricing
+            </Link>
+          </div>
+          <Button className="border border-black text-white text-xs uppercase py-2 px-4 transition-colors hover:bg-[#e5e2db] hover:text-[#1a1a1a]">
+            Login
+          </Button>
+        </div>
+      </header>
+       
+
+        <div className="p-28 space-x-28 flex flex-row gap-10 mx-auto bg-[#f4f1ea]">
+         
             <div className="text-2xl font-semibold mb-6">
                 <div className="text-5xl pb-8">Yoga Routine Generation Form</div>
                 <Image src={routineImage} height={900} />
@@ -146,6 +188,7 @@ export default function Component() {
                 <Button className="w-full" type="submit">Get routine</Button>
             </form>
         </div>
+        </>
     )
 }
 
