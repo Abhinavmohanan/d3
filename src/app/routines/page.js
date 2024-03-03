@@ -17,8 +17,6 @@ export default function Component() {
 
     const onSubmit = (data) => {
         //move to page
-       const router = useRouter();
-       router.push('/routines/1');
         console.log(data);
     };
     return (
@@ -185,7 +183,9 @@ export default function Component() {
                 </div>
                 <h2 className="text-xl font-medium mb-4">Medical Conditions</h2>
                 <p className="text-sm mb-4">Please consult a doctor before starting any new exercise program.</p>
+                <Link href="/routines/1">
                 <Button className="w-full" type="submit">Get routine</Button>
+                </Link>
             </form>
         </div>
         </>

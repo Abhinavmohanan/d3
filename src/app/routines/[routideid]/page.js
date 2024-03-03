@@ -7,6 +7,8 @@ import Sidebar from "@/components/Sidebar"
 
 
 import Sidebar3 from "@/components/Sidebar3";
+import Sidebar1 from "@/components/Sidebar2";
+import FinalBar from "@/components/FinalBar";
 
 
 export default function Component() {
@@ -28,6 +30,8 @@ export default function Component() {
         return <h1 className="text-8xl font-bold">Main Routine</h1>;
       case 2:
         return <h1 className="text-8xl font-bold">Cool Down</h1>;
+        case 3:
+        return <h1 className="text-8xl font-bold">End</h1>;
       default:
         return <h1 className="text-8xl font-bold">Warm up</h1>;
     }
@@ -37,9 +41,11 @@ export default function Component() {
       case 0:
         return <Sidebar/>
       case 1:
-        return <Sidebar3/>
+        return <Sidebar1/>
       case 2:
         return <Sidebar3/>
+      case 3:
+        return <FinalBar/>
       default:
         return <Sidebar/>
     }
