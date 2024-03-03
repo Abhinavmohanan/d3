@@ -4,18 +4,23 @@ import { useForm, Controller } from 'react-hook-form';
 import { SelectValue, SelectTrigger, SelectItem, SelectContent, Select } from "@/components/ui/select"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Button } from "@/components/ui/button"
+import routineImage from "@/assets/images/routine_image.jpg"
+import Image from "next/image";
 
 export default function Component() {
-    const form = useForm();
+    const { handleSubmit, control } = useForm();
 
     const onSubmit = (data) => {
         // Handle the form submission here, you can log the data or send it to the backend
         console.log(data);
     };
     return (
-        <div className="max-w-4xl mx-auto p-6 bg-white">
-            <h1 className="text-2xl font-semibold mb-6">Yoga Routine Generation Form</h1>
-            <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
+        <div className="p-28 space-x-28 flex flex-row gap-10 mx-auto bg-white">
+            <div className="text-2xl font-semibold mb-6">
+                <div className="text-5xl pb-8">Yoga Routine Generation Form</div>
+                <Image src={routineImage} height={900} />
+            </div>
+            <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                 <h2 className="text-xl font-medium mb-4">Personal Information</h2>
                 <div className="flex flex-col space-y-2">
                     <label className="font-medium" htmlFor="name">
@@ -49,16 +54,23 @@ export default function Component() {
                     <label className="font-medium" htmlFor="level">
                         Level
                     </label>
-                    <Select>
-                        <SelectTrigger id="level">
-                            <SelectValue placeholder="Select Level" />
-                        </SelectTrigger>
-                        <SelectContent position="popper">
-                            <SelectItem value="beginner">Beginner</SelectItem>
-                            <SelectItem value="intermediate">Intermediate</SelectItem>
-                            <SelectItem value="advanced">Advanced</SelectItem>
-                        </SelectContent>
-                    </Select>
+                    <Controller
+                        name="gender"
+                        control={control}
+                        render={({ field }) => (
+                            <Select>
+                                <SelectTrigger id="level">
+                                    <SelectValue placeholder="Select Level" />
+                                </SelectTrigger>
+                                <SelectContent position="popper">
+                                    <SelectItem value="beginner">Beginner</SelectItem>
+                                    <SelectItem value="intermediate">Intermediate</SelectItem>
+                                    <SelectItem value="advanced">Advanced</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        )}
+                    />
+
                 </div>
                 <h2 className="text-xl font-medium mb-4">Goals and Needs</h2>
                 <div className="flex flex-col space-y-2">

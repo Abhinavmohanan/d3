@@ -1,8 +1,14 @@
-import Link from "next/link"
+"use client"
 import { Button } from "@/components/ui/button"
 import { PlusIcon } from "lucide-react"
+import home1 from "@/assets/images/home_image_3.jpg"
+import home2 from "@/assets/images/home_image_2.jpg"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
+
 
 export default function Component() {
+  const router = useRouter();
   return (
     <div className="bg-[#f4f1ea] h-screen">
       <header className="flex justify-between items-center py-6 px-10">
@@ -10,7 +16,7 @@ export default function Component() {
           <button className="uppercase tracking-widest font-semibold text-sm">Menu</button>
           <div className="flex items-center space-x-1">
             <LocateIcon className="text-gray-500" />
-            <span className="text-xs">Slavíkova 5, Praha 2</span>
+            <span className="text-xs">Kochi, Kerala </span>
           </div>
         </div>
         <div className="flex items-center space-x-4">
@@ -31,42 +37,25 @@ export default function Component() {
           </Button>
         </div>
       </header>
-      <main className="flex justify-center items-center px-10 py-20">
-        <div className="max-w-xl flex justify-center items-center space-x-4">
-          <img
-            alt="Yoga Pose"
-            className="w-[300px] h-[300px] rounded-full"
-            height="300"
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "300/300",
-              objectFit: "cover",
-            }}
-            width="300"
-          />
-          <div>
-            <h1 className="font-serif text-9xl leading-none tracking-tighter mb-4">Zenflow</h1>
-            <h2 className="font-serif text-8xl leading-none tracking-tighter">Yoga</h2>
-            <h2 className="font-serif text-8xl  text-red-500 leading-none tracking-tighter">
-              <PlusIcon className="w-12 h-12 hover:animate-spin" />
-            </h2>
-            <p className="font-serif text-4xl leading-none tracking-tighter mt-4">In the r of Kochi</p>
+      <main className="flexjustify-center items-center px-10 py-20">
+        <div className="max-w-screen max-h-screen flex justify-center items-center space-x-4">
+          <Image src={home2} width={250} style={{ borderRadius: "50%", position: "absolute", right: "8%", top: "45%", zIndex: 1 }} />
+          <div style={{ zIndex: 2 }}>
+            <div className="flex flex-row" >
+              <h1 className="font-serif leading-none tracking-tighter mb-4" style={{ fontSize: "11rem" }}>Zenflow Yoga</h1>
+              <h2 className="font-serif text-8xl  text-red-500 leading-none tracking-tighter">
+                <PlusIcon className="w-12 h-12 hover:animate-spin" />
+              </h2>
+            </div>
+            <p className="font-serif text-4xl leading-none tracking-tighter mt-4">Unleashing Serenity, In the Heart of Kochi</p>
           </div>
-          <img
-            alt="Yoga Pose"
-            className="w-[300px] h-[300px] rounded-full"
-            height="300"
-            src="/placeholder.svg"
-            style={{
-              aspectRatio: "300/300",
-              objectFit: "cover",
-            }}
-            width="300"
-          />
+          <Image src={home1} width={400} style={{ padding: "10px", left: "5%", bottom: "12%", position: "absolute", zIndex: 1 }} />
         </div>
       </main>
       <footer className="flex justify-center items-center py-6">
-        <Button className="border border-black text-white text-xs uppercase py-2 px-4  transition-colors hover:bg-[#c4c1ba] hover:text-[#2d2d2d]">
+        <Button onClick={() => {
+          router.push("/routines")
+        }} className="border border-black text-white text-xs uppercase py-2 px-4  transition-colors hover:bg-[#c4c1ba] hover:text-[#2d2d2d]">
           Get yoga routines
         </Button>
       </footer>
